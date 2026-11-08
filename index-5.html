@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vidyabhimani'26 Registration</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark;
+--bg:#0b0d14;--card:#141826;--card2:#1b2033;--line:#262c44;--tx:#e8ebf7;--mu:#8d95b5;--ac:#7c6cff;--ac2:#38d6c4;--bad:#ff6b7d;--ok:#3ddc97}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#231d52 0%,transparent 60%),var(--bg);color:var(--tx);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100%}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:rgba(11,13,20,.85);backdrop-filter:blur(10px);z-index:5}
+h1{margin:0;font-size:20px;letter-spacing:.3px}h1 span{background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mu);font-size:12px}
+nav{display:flex;gap:6px;background:var(--card);padding:4px;border-radius:12px;border:1px solid var(--line)}
+nav button{background:none;border:0;color:var(--mu);padding:8px 14px;border-radius:9px;font:inherit;font-weight:600;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff}
+main{max-width:1100px;margin:0 auto;padding:20px}
+.grid{display:grid;gap:18px;grid-template-columns:minmax(0,380px) minmax(0,1fr)}
+#v-reg{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);align-items:start}
+#v-reg>.card:first-child{padding:26px}
+#form input,#form select{padding:14px 15px;font-size:17px}
+#form label{font-size:13px;margin-top:16px}
+#add{padding:14px 26px;font-size:16px}
+#v-reg>.card:last-child{padding:14px}#v-reg>.card:last-child h2{font-size:14px}
+#v-reg>.card:last-child table{min-width:0;font-size:12px}#v-reg>.card:last-child th,#v-reg>.card:last-child td{padding:6px 7px}
+@media(max-width:820px){.grid,#v-reg{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h2{margin:0 0 14px;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+label{display:block;font-size:12px;color:var(--mu);margin:12px 0 5px;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+input,select,textarea{width:100%;background:var(--card2);border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:11px 12px;font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(124,108,255,.2)}
+input[type=checkbox]{width:auto}
+.btn{background:linear-gradient(135deg,var(--ac),#5a4bd8);color:#fff;border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;cursor:pointer}
+.btn.g{background:var(--card2);border:1px solid var(--line);color:var(--tx)}
+.btn.ok{background:linear-gradient(135deg,#22b07d,#1a8f66)}
+.btn.sm{padding:6px 10px;font-size:13px}.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:0 0 auto}
+.wrap{overflow-x:auto;margin-top:8px}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+.pill{background:rgba(124,108,255,.18);color:#b9b1ff;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 16px}.stat b{display:block;font-size:22px}.stat small{color:var(--mu)}
+.empty{color:var(--mu);text-align:center;padding:26px 0}
+.frow{display:grid;grid-template-columns:1.3fr 1fr 1.5fr auto auto auto;gap:8px;align-items:center;margin-bottom:8px}
+@media(max-width:700px){.frow{grid-template-columns:1fr 1fr}}
+.warn{background:rgba(255,107,125,.12);border:1px solid rgba(255,107,125,.4);color:#ffb3bd;padding:10px 14px;border-radius:12px;margin-bottom:14px;font-size:13px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--card2);border:1px solid var(--ac);padding:10px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:9}
+#toast.on{opacity:1}
+.hide{display:none!important}
+.btn.bad{background:linear-gradient(135deg,#ff6b7d,#d94559)}
+#pw{position:fixed;inset:0;background:rgba(5,6,10,.7);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:20px;z-index:20}
+#pw .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;width:100%;max-width:340px}
+#pw h3{margin:0 0 4px;font-size:17px}#pwErr{color:var(--bad);font-size:13px;margin-top:8px}
+</style></head><body>
+<header>
+ <div><h1>🎓 Vidyabhimani<span>'26</span></h1><div class="sub">Event-day registration</div></div>
+ <div class="row"><input id="dev" placeholder="Device name (e.g. Desk 1)" style="width:170px"><nav id="nav"></nav></div>
+</header>
+<main>
+ <div id="warn" class="warn hide">Database not connected. Registrations are kept on this device and can be saved once connected.</div>
+
+ <section id="v-reg" class="grid">
+  <div class="card"><h2>New student</h2><div id="form"></div>
+   <div class="row" style="margin-top:16px"><button class="btn" id="add">Add to list</button><button class="btn g" id="clr">Clear</button></div></div>
+  <div class="card"><h2><span>This device <span class="pill" id="dcount">0</span></span><button class="btn ok" id="saveAll">Save all to database</button></h2>
+   <div class="wrap" id="dlist"></div></div>
+ </section>
+
+ <section id="v-all" class="hide card">
+  <h2>All registrations (live from all devices)</h2>
+  <div class="stats" id="stats"></div>
+  <div class="row"><input id="q" placeholder="Search..." style="max-width:300px"><button class="btn g" id="pdf">Export PDF</button></div>
+  <div class="wrap" id="alist"></div>
+ </section>
+
+ <section id="v-set" class="hide">
+  <div class="grid">
+   <div class="card"><h2>Schools attending</h2>
+    <div class="sub">One school per line. Staff pick from this list at registration.</div>
+    <textarea id="schools" rows="14" style="margin-top:10px" placeholder="Royal College&#10;Ananda College"></textarea></div>
+   <div class="card"><h2>Fields to collect</h2><div id="fields"></div>
+    <div class="row" style="margin-top:10px"><button class="btn g" id="addF">+ Add field</button></div></div>
+  </div>
+  <div class="row" style="margin-top:16px"><button class="btn" id="saveCfg">Save settings for all devices</button></div>
+ </section>
+</main>
+<div id="pw" class="hide"><div class="box"><h3>🔒 Password required</h3><div class="sub" id="pwMsg"></div>
+ <input id="pwIn" type="password" placeholder="Enter password" autocomplete="off" style="margin-top:12px"><div id="pwErr" class="hide">Wrong password</div>
+ <div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn g" id="pwNo">Cancel</button><button class="btn" id="pwOk">Confirm</button></div></div></div>
+<div id="toast"></div>
+<script>
+/* ====== EDIT THESE TWO LINES (Supabase > Project Settings > API) ====== */
+window.SUPABASE_URL='https://fbevrbdwcqkrhiwallhx.supabase.co';
+window.SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiZXZyYmR3Y3Frcmhpd2FsbGh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2MDQ5NDMsImV4cCI6MjEwNjE4MDk0M30.ias8pP4fO1fhSLY9LaCcC7ZDsHYTGx6c3RYjqvdIcJk';
+/* ===================================================================== */
+</script>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const DEF={schools:[],fields:[
+ {id:'name',label:'Name',type:'text',req:true},
+ {id:'alYear',label:'A/L Year',type:'select',options:['2026','2027','2028'],req:true},
+ {id:'school',label:'School',type:'school',req:true,sticky:true},
+ {id:'stream',label:'Stream',type:'select',options:['Physical Science','Biological Science','Commerce','Arts','Technology'],req:true},
+ {id:'teacher',label:'Teacher in charge',type:'text',req:false,sticky:true}]};
+let cfg=structuredClone(DEF),edit=structuredClone(DEF),drafts=ls.get('vm26_drafts',[]),recs=[],db=null,tab='reg',canEdit=true,saving=false;
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2200)};
+$('#dev').value=ls.get('vm26_dev','');$('#dev').oninput=e=>ls.set('vm26_dev',e.target.value);
+
+function renderNav(){const t=[['reg','Register'],['all','All data']];if(canEdit)t.push(['set','Setup']);
+ $('#nav').innerHTML=t.map(([k,l])=>`<button data-t="${k}" class="${tab===k?'on':''}">${l}</button>`).join('');
+ for(const k of ['reg','all','set'])$('#v-'+k).classList.toggle('hide',k!==tab)}
+$('#nav').onclick=e=>{const t=e.target.dataset.t;if(t){tab=t;renderNav()}};
+
+function renderForm(keep){const old={};if(keep)cfg.fields.forEach(f=>{const el=$('#f_'+f.id);if(el)old[f.id]=el.value});
+ let h='';for(const f of cfg.fields){const v=esc(old[f.id]||'');h+=`<label>${esc(f.label)}${f.req?' *':''}</label>`;
+  if(f.type==='select')h+=`<select id="f_${f.id}"><option value="">Select...</option>${(f.options||[]).map(o=>`<option ${o===old[f.id]?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
+  else if(f.type==='school')h+=`<input id="f_${f.id}" list="schoolList" placeholder="Start typing, then pick from the list" value="${v}" autocomplete="off">`;
+  else h+=`<input id="f_${f.id}" value="${v}" autocomplete="off">`}
+ h+=`<datalist id="schoolList">${cfg.schools.map(s=>`<option value="${esc(s)}">`).join('')}</datalist>`;$('#form').innerHTML=h}
+
+$('#add').onclick=()=>{const values={};
+ for(const f of cfg.fields){let v=($('#f_'+f.id).value||'').trim();
+  if(f.req&&!v)return toast(`Please fill: ${f.label}`);
+  if(f.type==='school'&&v){const m=cfg.schools.find(s=>s.toLowerCase()===v.toLowerCase());if(!m)return toast('Pick the school from the list');v=m}
+  values[f.id]=v}
+ drafts.unshift({id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),values,at:Date.now(),device:$('#dev').value.trim()});
+ ls.set('vm26_drafts',drafts);
+ cfg.fields.forEach(f=>{if(!(f.type==='school'||f.sticky))$('#f_'+f.id).value=''});
+ renderDrafts();toast('Added');const first=$('#f_'+cfg.fields[0].id);first&&first.focus()};
+$('#clr').onclick=()=>renderForm(false);
+
+function renderDrafts(){$('#dcount').textContent=drafts.length;$('#saveAll').disabled=!drafts.length||saving;
+ $('#dlist').innerHTML=drafts.length?`<table><thead><tr><th>#</th>${cfg.fields.map(f=>`<th>${esc(f.label)}</th>`).join('')}<th></th></tr></thead><tbody>${drafts.map((d,i)=>`<tr><td>${drafts.length-i}</td>${cfg.fields.map(f=>`<td>${esc(d.values[f.id])}</td>`).join('')}<td><button class="btn g sm" data-del="${d.id}">Remove</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No students added on this device yet.</div>'}
+$('#dlist').onclick=e=>{const id=e.target.dataset.del;if(id){drafts=drafts.filter(d=>d.id!==id);ls.set('vm26_drafts',drafts);renderDrafts()}};
+
+$('#saveAll').onclick=async()=>{if(!online)return toast('Database not connected');saving=true;renderDrafts();
+ const batch=[...drafts];
+ try{await api('registrations',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify(batch.map(d=>({id:d.id,data:d.values,device:d.device,created_at:d.at})))});
+  drafts=drafts.filter(d=>!batch.some(b=>b.id===d.id));ls.set('vm26_drafts',drafts);toast(`Saved ${batch.length} to database`);pull()}
+ catch(e){toast('Save failed - check internet and try again')}
+ saving=false;renderDrafts()};
+
+function renderAll(){const q=$('#q').value.toLowerCase();const bySchool={};
+ recs.forEach(r=>{const s=r.values[(cfg.fields.find(f=>f.type==='school')||{}).id]||'-';bySchool[s]=(bySchool[s]||0)+1});
+ $('#stats').innerHTML=`<div class="stat"><b>${recs.length}</b><small>Total registered</small></div><div class="stat"><b>${Object.keys(bySchool).length}</b><small>Schools</small></div>`+Object.entries(bySchool).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([s,n])=>`<div class="stat"><b>${n}</b><small>${esc(s)}</small></div>`).join('');
+ const rows=recs.filter(r=>!q||JSON.stringify(r.values).toLowerCase().includes(q));
+ $('#alist').innerHTML=rows.length?`<table><thead><tr><th>#</th>${cfg.fields.map(f=>`<th>${esc(f.label)}</th>`).join('')}<th>Device</th><th></th></tr></thead><tbody>${rows.map((r,i)=>`<tr><td>${rows.length-i}</td>${cfg.fields.map(f=>`<td>${esc(r.values[f.id])}</td>`).join('')}<td>${esc(r.device)}</td><td><button class="btn bad sm" data-rid="${esc(r.id)}">Delete</button></td></tr>`).join('')}</tbody></table>`:'<div class="empty">No registrations found.</div>'}
+$('#q').oninput=renderAll;
+const ADMIN_PW='admin';
+function askPw(action){return new Promise(res=>{const m=$('#pw'),i=$('#pwIn');$('#pwMsg').textContent='Enter the admin password to '+action+'.';i.value='';$('#pwErr').classList.add('hide');m.classList.remove('hide');i.focus();
+ const done=v=>{m.classList.add('hide');$('#pwOk').onclick=$('#pwNo').onclick=i.onkeydown=null;i.value='';res(v)};
+ const go=()=>{if(i.value===ADMIN_PW)done(true);else{$('#pwErr').classList.remove('hide');i.select()}};
+ $('#pwOk').onclick=go;$('#pwNo').onclick=()=>done(false);i.onkeydown=e=>{if(e.key==='Enter')go();if(e.key==='Escape')done(false)}})}
+
+$('#alist').onclick=async e=>{const id=e.target.dataset.rid;if(!id)return;
+ const r=recs.find(x=>String(x.id)===id);if(!r)return;
+ const name=r.values[cfg.fields[0].id]||'this submission';
+ if(!await askPw(`delete "${name}"`))return;
+ try{await api('registrations?id=eq.'+encodeURIComponent(id),{method:'DELETE',headers:{Prefer:'return=representation'}}).then(d=>{if(Array.isArray(d)&&!d.length)throw new Error('not deleted')});
+  recs=recs.filter(x=>String(x.id)!==id);renderAll();toast('Submission deleted');pull()}
+ catch(err){toast('Delete failed - database may not allow deleting')}};
+
+$('#pdf').onclick=async()=>{if(!recs.length)return toast('Nothing to export');
+ if(!await askPw('export the PDF'))return;
+ const head=['#',...cfg.fields.map(f=>f.label),'Device'];
+ const body=recs.map((r,i)=>[recs.length-i,...cfg.fields.map(f=>r.values[f.id]),r.device]);
+ const html=`<!DOCTYPE html><html><head><meta charset="utf-8"><title>vidyabhimani26</title><style>
+ @page{size:A4 landscape;margin:12mm}body{font:11px/1.4 Arial,"Noto Sans","Noto Sans Sinhala",sans-serif;color:#111}
+ h1{font-size:18px;margin:0}p{margin:2px 0 12px;color:#555}
+ table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:5px 7px;text-align:left;vertical-align:top}
+ th{background:#eee}thead{display:table-header-group}tr{page-break-inside:avoid}</style></head><body>
+ <h1>Vidyabhimani'26 Registrations</h1><p>Total: ${recs.length} &middot; Exported: ${esc(new Date().toLocaleString())}</p>
+ <table><thead><tr>${head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${body.map(r=>`<tr>${r.map(v=>`<td>${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></body></html>`;
+ const f=document.createElement('iframe');f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+ f.onload=()=>setTimeout(()=>{f.contentWindow.focus();f.contentWindow.print();setTimeout(()=>f.remove(),60000)},300);
+ document.body.appendChild(f);f.srcdoc=html;toast('Choose "Save as PDF" in the print window')};
+
+function renderSetup(){$('#schools').value=edit.schools.join('\n');
+ $('#fields').innerHTML=edit.fields.map((f,i)=>`<div class="frow"><input data-i="${i}" data-k="label" value="${esc(f.label)}" placeholder="Label">
+  <select data-i="${i}" data-k="type"><option value="text" ${f.type==='text'?'selected':''}>Text</option><option value="select" ${f.type==='select'?'selected':''}>Dropdown</option><option value="school" ${f.type==='school'?'selected':''}>School list</option></select>
+  <input data-i="${i}" data-k="options" value="${esc((f.options||[]).join(', '))}" placeholder="Options, comma separated" class="${f.type==='select'?'':'hide'}">
+  <label style="margin:0;text-transform:none"><input type="checkbox" data-i="${i}" data-k="req" ${f.req?'checked':''}> Req</label>
+  <label style="margin:0;text-transform:none"><input type="checkbox" data-i="${i}" data-k="sticky" ${f.sticky?'checked':''}> Keep</label>
+  <button class="btn g sm" data-rm="${i}">✕</button></div>`).join('')}
+$('#fields').oninput=$('#fields').onchange=e=>{const t=e.target,i=t.dataset.i,k=t.dataset.k;if(i==null)return;const f=edit.fields[i];
+ if(k==='req'||k==='sticky')f[k]=t.checked;else if(k==='options')f.options=t.value.split(',').map(s=>s.trim()).filter(Boolean);else f[k]=t.value;
+ if(k==='type'&&e.type==='change')renderSetup()};
+$('#fields').onclick=e=>{const r=e.target.dataset.rm;if(r!=null&&confirm('Remove this field?')){edit.fields.splice(r,1);renderSetup()}};
+$('#addF').onclick=()=>{edit.fields.push({id:'f'+Date.now().toString(36),label:'New field',type:'text',req:false});renderSetup()};
+$('#saveCfg').onclick=async()=>{edit.schools=[...new Set($('#schools').value.split('\n').map(s=>s.trim()).filter(Boolean))];
+ if(!edit.fields.length)return toast('Add at least one field');
+ try{await api('config',{method:'POST',headers:{Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({id:'event',data:edit})});cfg=structuredClone(edit);renderForm(true);renderDrafts();renderAll();toast('Settings saved for all devices')}catch(e){toast('Could not save settings')}};
+
+const SB=(window.SUPABASE_URL||'').replace(/\/$/,''),KEY=window.SUPABASE_KEY||'';let online=false,lastCfg='';
+async function api(path,o={}){const r=await fetch(SB+'/rest/v1/'+path,{...o,headers:{apikey:KEY,...(KEY.startsWith('eyJ')?{Authorization:'Bearer '+KEY}:{}),'Content-Type':'application/json',...(o.headers||{})}});if(!r.ok)throw new Error(await r.text());const t=await r.text();return t?JSON.parse(t):null}
+async function pull(){try{
+ const c=await api('config?id=eq.event&select=data');
+ if(c&&c[0]){const j=JSON.stringify(c[0].data);if(j!==lastCfg){lastCfg=j;cfg={...structuredClone(DEF),...c[0].data};renderForm(true);renderDrafts();if(tab!=='set'){edit=structuredClone(cfg);renderSetup()}}}
+ const r=await api('registrations?select=id,data,device,created_at&order=created_at.desc');
+ recs=r.map(x=>({id:x.id,values:x.data,device:x.device,createdAt:x.created_at}));renderAll();
+ online=true;$('#warn').classList.add('hide')}catch(e){online=false;$('#warn').classList.remove('hide')}}
+function init(){renderNav();renderForm();renderDrafts();renderSetup();renderAll();
+ if(!SB||!KEY||SB.includes('YOUR-')){$('#warn').textContent='Set SUPABASE_URL and SUPABASE_KEY at the top of the file.';$('#warn').classList.remove('hide');return}
+ pull();setInterval(pull,4000)}
+init();
+</script></body></html>
